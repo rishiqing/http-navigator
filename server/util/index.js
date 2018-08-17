@@ -1,5 +1,4 @@
 var config = require('config')
-var log = require('../../log-config')
 // 验证是否是手机号
 function isPhone(username) {
   var myreg = /^[1][0-9]{10}$/;
@@ -19,15 +18,16 @@ function processRedirectLocation(location,isNew){
 
 // 通过请求的headers来判断当前请求是应该去新版还是旧版
 function isOld(req) {
-  if(req.url.indexOf("/task/v2/register") !== -1){
+  if(req.url.indexOf("/task/v2/register") !== -1 ||
+      req.url.indexOf("/task/login/ajaxSuccess") !== -1){
     return true;
   }
   if(req.url.indexOf("/task/v1/register")!=-1 ||
-      req.url.indexOf("/task/v1/team/invite/verifyCode")!=-1){
+      req.url.indexOf("/task/v1/team/invite/verifyCode")!=-1 ||
+      req.url.indexOf("/task/login/success") !== -1){
       return false;
   }
   var headers = req.headers;
-    log.info(headers);
   var token = headers["token"];
   if(token && token.indexOf("new_") !== -1){
     return false;
@@ -44,7 +44,7 @@ function isOld(req) {
   }
   var cookies = headers["cookie"]
   if (!cookies) {
-    return false
+    return true
   }
   var isOld = true;
   cookies.split(";").forEach(function (cookie) {
