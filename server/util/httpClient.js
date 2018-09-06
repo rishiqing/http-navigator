@@ -91,7 +91,8 @@ function toLogin(req, loginUrl, json, callback){
       if(body!=''){
         body += '&'
       }
-      body += (key+"="+json[key])
+      // 使用encodeURIComponent对值进行编码操作
+      body += (key+"="+encodeURIComponent(json[key]))
     }
   }catch (err){
     return callback(err)
