@@ -24,7 +24,8 @@ function isOld(req) {
   ){
       return false;
   }
-  if(req.url.indexOf("/task/v2/register") !== -1
+  if(req.url.indexOf("/task/v2/register") !== -1 ||
+      req.url.indexOf("/task/todoMessage/changeReceiverMessageV2") !== -1
   ){
     return true;
   }
