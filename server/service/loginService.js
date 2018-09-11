@@ -76,6 +76,9 @@ function forwardToOauthLogin(req, res, oauthKey, originKey, callback){
   }else{
     paramsKey = util.getParamsKey(json['oauthType'])
   }
+  if(originKey === 'unionId' && !json[originKey]){
+      originKey = 'openId'
+  }
   // 通过用户名去新版判断用户应该在新版登录还是旧版
   httpClient.isExistNewOauth(paramsKey, json[originKey], function(err, isNew){
     // global.logger.info(`||--httpClient.isExistNew：${req.url}, 已耗时：${req.rsqStartTime}`)
