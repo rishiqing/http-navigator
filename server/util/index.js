@@ -39,7 +39,8 @@ function isOld(req) {
       req.url.indexOf("/task/weixinOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/qqOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/v1/findBackPassword") !== -1 ||
-      req.url.indexOf("/task/v1/userSetting/verifyEmail") !== -1
+      req.url.indexOf("/task/v1/userSetting/verifyEmail") !== -1 ||
+      req.url.indexOf("/task/new/pay/afterPingPay") !== -1
   ){
       return false;
   }
