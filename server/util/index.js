@@ -19,8 +19,9 @@ function processRedirectLocation(location,isNew){
 
 // 通过请求的headers来判断当前请求是应该去新版还是旧版
 function isOld(req) {
-  if(req.url.indexOf("/task/rsqAttach/userAvatar") !== -1 &&
-      req.url.indexOf(config.newTokenPrefix) !== -1
+  if((req.url.indexOf("/task/rsqAttach/userAvatar") !== -1 &&
+      req.url.indexOf(config.newTokenPrefix) !== -1) ||
+      req.url.indexOf("/v2/register/changePassword") !== -1
   ){
       return false;
   }
