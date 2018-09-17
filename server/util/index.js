@@ -21,7 +21,8 @@ function processRedirectLocation(location,isNew){
 function isOld(req) {
   if((req.url.indexOf("/task/rsqAttach/userAvatar") !== -1 &&
       req.url.indexOf(config.newTokenPrefix) !== -1) ||
-      req.url.indexOf("/v2/register/changePassword") !== -1
+      req.url.indexOf("/v2/register/changePassword") !== -1 ||
+      req.url.indexOf("/v2/register/registerVerify") !== -1
   ){
       return false;
   }
