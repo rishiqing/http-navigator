@@ -94,6 +94,10 @@ function getParamsKey(oauthKey){
         return "qqOpenid";
     }else if("xiaoMi"==oauthKey){
         return "xmOpenid";
+    }else if("dingtalk"==oauthKey){
+        return "dingtalkOuterId";
+    }else if("qywx"==oauthKey){
+        return "qywxOuterId";
     }
     return oauthKey
 }
