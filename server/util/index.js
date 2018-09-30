@@ -29,7 +29,8 @@ function isOld(req) {
   if(req.url.indexOf("/task/v2/register") !== -1 ||
       req.url.indexOf("/task/todoMessage/changeReceiverMessageV2") !== -1 ||
       req.url.indexOf("/task/login/ajaxSuccess") !== -1 ||
-      req.url.indexOf("/task/v2/invite/inviteVerifyToken") !== -1
+      req.url.indexOf("/task/v2/invite/inviteVerifyToken") !== -1 ||
+      req.url.indexOf("/task/dingtalkOauth/afterLoginUnionId") !== -1
   ){
     return true;
   }
@@ -41,6 +42,7 @@ function isOld(req) {
       req.url.indexOf("/task/v1/qq/loginPage") !== -1 ||
       req.url.indexOf("/task/sinaOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/weixinOauth/afterLogin") !== -1 ||
+      req.url.indexOf("/task/dingtalkOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/qqOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/v1/findBackPassword") !== -1 ||
       req.url.indexOf("/task/v1/userSetting/verifyEmail") !== -1 ||
