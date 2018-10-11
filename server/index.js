@@ -1,6 +1,7 @@
 global.logger = require('../log-config').default
 
 const http = require('http')
+var url = require('url')
 
 const config = require('config')
 const app = require('./web/webApp')
@@ -22,9 +23,10 @@ Object.keys(config.oauth).forEach(function (oauthKey) {
 const server = http.createServer(function(req, res){
   // global.logger.info(`>>--接受到请求：${req.url}, 时间为：${startTime}`)
   req.rsqTime = new Date().getTime()
-  if(config.checkUrl === req.url){
+  const pathname = url.parse(req.url).pathname
+  if(config.checkUrl === pathname){
     res.end('success')
-  }else if(loginUrlArray.indexOf(req.url)!=-1){
+  }else if(loginUrlArray.indexOf(pathname) !== -1){
     // 登录接口单独处理
     app(req, res)
   }else{

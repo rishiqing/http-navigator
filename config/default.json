@@ -7,15 +7,15 @@
   "proxyTimeoutMills": 30000,
   "logLevel": "all",
   "PORT": 8081,
-  "forwardUrl": "https://beta.rishiqing.com",
-  "forwardUrlNew": "http://localhost:3001",
+  "forwardUrl": "https://www.rishiqing.com",
+  "forwardUrlNew": "https://prodnew.rishiqing.com",
 //  "forwardUrlNew": "https://prodnew.rishiqing.com",
 //  "forwardUrlOld": "https://prodold.rishiqing.com",
-  "forwardUrlOld": "http://localhost:3001",
-  "forwardUrlNewReg": "^http[s]?:\\/\\/localhost:3001",
+  "forwardUrlOld": "https://prodold.rishiqing.com",
+  "forwardUrlNewReg": "^http[s]?:\\/\\/prodnew\\.rishiqing\\.com",
 //  "forwardUrlNewReg": "^http[s]?:\\/\\/127\\.0\\.0\\.1:8088",
 //  "forwardUrlOldReg": "^http[s]?:\\/\\/127\\.0\\.0\\.1:8080",
-  "forwardUrlOldReg": "^http[s]?:\\/\\/localhost:3001",
+  "forwardUrlOldReg": "^http[s]?:\\/\\/prodold\\.rishiqing\\.com",
   "loginAddress": "/task/j_spring_security_check",
   "checkUrl": "/check",
   "oauth": {
@@ -71,7 +71,28 @@
     },
     "xiaoMi": {
 
+    },
+    "dingtalk": {
+      "tokenLogin": {
+        "url": "/task/dingtalkOauth/tokenLogin",
+        "key": "token"
+      },
+      "tokenDirectSignIn": {
+        "url": "/task/dingtalkOauth/tokenDirectSignIn",
+        "key": "token"
+      }
+    },
+    "qywx": {
+      "tokenLogin": {
+        "url": "/task/qywxOauth/tokenLogin",
+        "key": "token"
+      },
+      "tokenDirectSignIn": {
+        "url": "/task/qywxOauth/tokenDirectSignIn",
+        "key": "token"
+      }
     }
+
   },
   "verifyOauthExistUrl": "/task/v1/register/isOauthRegistered",
   "newTokenPrefix": "new_"

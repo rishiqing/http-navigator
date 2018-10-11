@@ -69,6 +69,14 @@ function forwardToLogin(req, res, callback){
 function forwardToOauthLogin(req, res, oauthKey, originKey, callback){
   // 将参数转换成Json
   var json = req.body
+  // 钉钉和企业微信的授权token存在于GET请求的query中，需要将参数转换到body中
+  if(req.method === 'GET'){
+    for(let key in req.query){
+      if(req.query.hasOwnProperty(key)){
+        json[key] = req.query[key]
+      }
+    }
+  }
   // 获取要发送请求的参数名
   var paramsKey
   if(req.url.indexOf("/task/v2/android/phoneOauth/login")===-1){
@@ -78,6 +86,10 @@ function forwardToOauthLogin(req, res, oauthKey, originKey, callback){
   }
   if(originKey === 'unionId' && !json[originKey]){
       originKey = 'openId'
+  }
+  // 如果json[originKey]未找到，那么抛出日志
+  if(!json[originKey]){
+    global.logger.warn(`====oauth login token not found: url: ${req.url}, key: ${paramsKey}, json: ${JSON.stringify(json)}`)
   }
   // 通过用户名去新版判断用户应该在新版登录还是旧版
   httpClient.isExistNewOauth(paramsKey, json[originKey], function(err, isNew){
