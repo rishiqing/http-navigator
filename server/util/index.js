@@ -22,7 +22,10 @@ function isOld(req) {
   if((req.url.indexOf("/task/rsqAttach/userAvatar") !== -1 &&
       req.url.indexOf(config.newTokenPrefix) !== -1) ||
       req.url.indexOf("/v2/register/changePassword") !== -1 ||
-      req.url.indexOf("/v2/register/registerVerify") !== -1
+      req.url.indexOf("/v2/register/registerVerify") !== -1 ||
+      req.url.indexOf("/v2/register/sendValidateCode") !== -1 ||
+      req.url.indexOf("/v2/register/mobileResetPassword") !== -1 ||
+      req.url === "/task/v2/register"
   ){
       return false;
   }
@@ -46,8 +49,8 @@ function isOld(req) {
       req.url.indexOf("/task/qqOauth/afterLogin") !== -1 ||
       req.url.indexOf("/task/v1/findBackPassword") !== -1 ||
       req.url.indexOf("/task/v1/userSetting/verifyEmail") !== -1 ||
-      req.url.indexOf("/task/new/pay/afterPingPay") !== -1 ||
-      req.url.indexOf("/task/login/success") !== -1
+      req.url.indexOf("/task/new/pay/afterPingPay") !== -1
+      // req.url.indexOf("/task/login/success") !== -1
   ){
       return false;
   }
