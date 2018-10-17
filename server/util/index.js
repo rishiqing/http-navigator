@@ -26,7 +26,7 @@ function isOld(req) {
       req.url.indexOf("/v2/register/sendValidateCode") !== -1 ||
       req.url.indexOf("/v2/register/mobileResetPassword") !== -1 ||
       req.url === "/task/v2/register" ||
-      req.url.indexOf("/task/adminOauth/tokenDirectSignIn")
+      req.url.indexOf("/task/adminOauth/tokenDirectSignIn") !== -1
   ){
       return false;
   }
