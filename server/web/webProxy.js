@@ -49,12 +49,15 @@ mainProxy.on('proxyRes', function(proxyRes, req, res){
   }
 })
 mainProxy.on('error', function(err, req, res){
-  consoleLogger.error(`--proxy url: ${req.url}, \nerror: ${err.stack}`)
-  res.writeHead(500, {
-    'Content-Type': 'text/plain'
-  });
+  try{
+    res.writeHead(500, {
+      'Content-Type': 'text/plain'
+    });
 
-  res.end('Something went wrong.');
+    res.end('Something went wrong.');
+  }catch(err){
+    consoleLogger.error(`--on error url: ${req.url}, \nerror: ${err.stack}`)
+  }
 })
 
 //  proxy主方法，用来走代理
