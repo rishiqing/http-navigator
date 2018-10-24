@@ -59,9 +59,7 @@ function isOld(req) {
   if(req.url.indexOf("/task/v1/onlyOffice/callbackDeal")!==-1 ||
       req.url.indexOf("/task/v1/onlyOffice/getFileUrl")!==-1
   ){
-    if(req.url.indexOf("isBackNewVersion=true")!==-1){
-      return false;
-    }
+    return false;
   }
   var headers = req.headers;
   var token = headers["token"];
